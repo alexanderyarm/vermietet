@@ -1,0 +1,12 @@
+<div class="item">
+  <div class="info">
+    <span class="date info-col">{{ invoice.date }}</span>
+    <span class="info-col">{{ subject }}</span>
+    <span class="info-col" *ngIf="iban">{{ iban }}</span>
+    <span class="info-col amount">{{ amount }} €</span>
+  </div>
+  <div class="controls">
+    <span class="control" (click)="handleEditClick()">Edit</span>&nbsp;
+    <span class="control" (click)="handleDeleteClick()">Delete</span>
+  </div>
+</div>

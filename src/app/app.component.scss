@@ -1,0 +1,46 @@
+@import '../assets/css/vars.scss';
+
+.logo {
+  position: absolute;
+  height: 5rem;
+  top: 0;
+  left: 2rem;
+}
+
+.wrapper {
+  padding-top: 7rem;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 0 0 5px 5px;
+}
+
+.panel-title {
+  background: #07f;
+  padding: 1rem;
+  border-radius: 5px 5px 0 0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.panel-content {
+  padding: 1rem;
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  .wrapper {
+    padding: 8rem 2rem 2rem;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  .panel-title {
+    padding: 2rem;
+    font-size: 2rem;
+  }
+
+  .panel-content {
+    padding: 2rem;
+  }
+}

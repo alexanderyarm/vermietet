@@ -1,0 +1,53 @@
+@import '../../../../assets/css/vars.scss';
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-text {
+  margin-right: 1rem;
+}
+
+.transfer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 1rem;
+  background: transparent;
+  transition: background .2s;
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:hover {
+    background: rgb(252, 249, 249);
+  }
+
+  &-selected,
+  &-selected:hover {
+    background: var(--green);
+    color: #fff;
+    border: 1px solid var(--green);
+
+    .amount {
+      color: #fff
+    }
+  }
+}
+
+.transfer-left {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .5rem;
+}
+
+.amount {
+  white-space: nowrap;
+  color: var(--green);
+}

@@ -1,1 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/css/vars.scss';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #0077ff;
+  --indigo: #6610f2;
+  --purple: #6f42c1;
+  --pink: #e83e8c;
+  --red: #ff0606;
+  --orange: #ffad0d;
+  --yellow: #ffc107;
+  --green: #00ce7d;
+  --teal: #20c997;
+  --cyan: #0098e5;
+  --white: #ffffff;
+  --gray: #f3f3f3;
+  --gray-dark: #343a40;
+  --primary: #0077ff;
+  --secondary: #f3f3f3;
+  --success: #00ce7d;
+  --info: #0098e5;
+  --warning: #ffc107;
+  --danger: #ff0606;
+  --light: #f8f9fa;
+  --dark: #343a40;
+}
+
+body {
+  color: var(--dark);
+  background: rgb(245, 241, 241);
+  font-family: 'Roboto', sans-serif;
+  min-width: 320px;
+  margin: 0;
+}
+
+input {
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+  color: var(--dark);
+  height: 38px;
+  line-height: 40px;
+  padding: 0 1rem;
+  outline: 0;
+  width: 100%;
+
+  &:focus {
+    border-color: var(--blue);
+  }
+
+  &.ng-touched.ng-invalid {
+    border-color: var(--red);
+  }
+}
+
+
+button.submit {
+  cursor: pointer;
+  font-size: .9rem;
+  line-height: .9rem;
+  padding: 0 2.5rem;
+  height: 40px;
+  background: var(--green);
+  color: #fff;
+  border-radius: 2rem;
+  border: 0;
+  transition: .2s opacity;
+  opacity: 1;
+  outline: none;
+
+  &:hover {
+    opacity: .9;
+  }
+  
+  &[disabled] {
+    color: var(--gray-dark);
+    background: var(--gray);
+    cursor: default;
+  }
+}

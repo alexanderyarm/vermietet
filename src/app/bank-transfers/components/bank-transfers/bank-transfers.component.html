@@ -1,0 +1,37 @@
+<form [formGroup]="bankTransfersForm">
+  <div class="search-container">
+    <span class="search-text">Search</span>
+    <input
+      type="text"
+      formControlName="searchIban"
+      placeholder="Type IBAN to search"
+    />
+  </div>
+</form>
+
+<div
+  class="transfer"
+  [ngClass]="{ 'transfer-selected': isSelected(transfer) }"
+  *ngFor="
+    let transfer of transfers
+      | filterByIban: bankTransfersForm.get('searchIban').value
+  "
+  (click)="toggleTransfer(transfer)"
+>
+  <div class="transfer-left">
+    <span class="transfer-col">{{ transfer.subject }}</span>
+    <span class="transfer-col amount">{{ transfer.amount }} €</span>
+  </div>
+  <div class="transfer-right">
+    <span class="transfer-col">{{ transfer.iban }}</span>
+  </div>
+</div>
+
+<div
+  *ngIf="
+    !(transfers | filterByIban: bankTransfersForm.get('searchIban').value)
+      ?.length
+  "
+>
+  No bank transfers can be found
+</div>

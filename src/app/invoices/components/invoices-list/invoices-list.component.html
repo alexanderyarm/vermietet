@@ -1,0 +1,6 @@
+<app-invoice-list-item
+  *ngFor="let invoice of invoiceList"
+  [invoice]="invoice"
+  (onEdit)="handleEditClick($event)"
+  (onDelete)="handleDeleteClick($event)"
+></app-invoice-list-item>

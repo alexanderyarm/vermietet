@@ -1,0 +1,106 @@
+<div class="tabs">
+  <button
+    class="tab"
+    [ngClass]="{ 'tab-active': isTabActive('INFO') }"
+    (click)="goToTab('INFO')"
+  >
+    Invoice information
+  </button>
+
+  <button
+    class="tab"
+    [ngClass]="{ 'tab-active': isTabActive('PAYMENT') }"
+    (click)="goToTab('PAYMENT')"
+    [disabled]="!isRetrieveFromBankAccount()"
+  >
+    Payment
+  </button>
+</div>
+
+<form [formGroup]="invoiceForm" (ngSubmit)="submit()">
+  <div class="tab-content">
+    <ng-container *ngIf="showTabContent('INFO')">
+      <div
+        class="container-toggle"
+        (click)="dateContainer = !dateContainer"
+        [ngClass]="dateContainer ? 'container-toggle-open' : ''"
+      >
+        <span>Date</span>
+        <span>{{ invoiceForm.get('date').value }}</span>
+      </div>
+      <div class="container">
+        <label class="label" for="date">Date</label>
+        <input type="text" formControlName="date" id="date" />
+      </div>
+
+      <div
+        class="container-toggle"
+        (click)="subjectContainer = !subjectContainer"
+        [ngClass]="subjectContainer ? 'container-toggle-open' : ''"
+      >
+        <span>Subject</span>
+        <span>{{ invoiceForm.get('subject').value }}</span>
+      </div>
+      <div class="container">
+        <label class="label" for="subject">Subject</label>
+        <input type="text" formControlName="subject" id="subject" />
+      </div>
+
+      <div class="container">
+        <label for="retrieveFromBankAccount" class="label-checkbox">
+          Retrieve amount from bank account
+        </label>
+        <input
+          type="checkbox"
+          formControlName="retrieveFromBankAccount"
+          id="retrieveFromBankAccount"
+        />
+      </div>
+
+      <ng-container *ngIf="!isRetrieveFromBankAccount()">
+        <div
+          class="container-toggle"
+          (click)="amountContainer = !amountContainer"
+          [ngClass]="amountContainer ? 'container-toggle-open' : ''"
+        >
+          <span>Amount</span>
+          <span *ngIf="invoiceForm.get('amount').value">
+            {{ invoiceForm.get('amount').value }} €
+          </span>
+        </div>
+        <div class="container">
+          <label class="label" for="amount">Amount</label>
+          <input type="text" formControlName="amount" id="amount" />
+          <span>&nbsp;&nbsp;€</span>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="showTabContent('PAYMENT')">
+      <div class="payment-container">
+        <app-bank-transfers
+          [selected]="invoiceForm.get('bankTransfer').value"
+          (onBankTransferSelect)="onBankTransferSelect($event)"
+        ></app-bank-transfers>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="button-wrapper">
+    <button
+      *ngIf="showNextButton()"
+      type="button"
+      (click)="goToTab('PAYMENT')"
+      class="submit"
+    >
+      Next step
+    </button>
+    <button
+      *ngIf="showDoneButton()"
+      [disabled]="!invoiceForm.valid"
+      class="submit"
+    >
+      Done
+    </button>
+  </div>
+</form>

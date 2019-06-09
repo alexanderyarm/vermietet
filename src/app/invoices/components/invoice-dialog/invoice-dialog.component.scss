@@ -1,0 +1,47 @@
+@import '../../../../assets/css/vars.scss';
+
+.dialog {
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 36px 0 0;
+  z-index: 100;
+}
+
+.dialog-blur {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .5);
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  &:after {
+    content: '✕';
+  }
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  .dialog {
+    padding: 24px;
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    width: 500px;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,118 @@
+@import '../../../../assets/css/vars.scss';
+
+.tabs {
+  border-bottom: 1px solid #ccc;
+  margin: 0 0 24px;
+}
+
+.tab {
+  background: transparent;
+  font-size: 1rem;
+  position: relative;
+  height: 36px;
+  border: 0;
+  padding: 0 24px;
+  line-height: 36px;
+  outline: 0;
+
+  &:after {
+    position: absolute;
+    content: '';
+    height: 1px;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+  }
+
+  &:not([disabled]) {
+    cursor: pointer;
+  }
+
+  &:not([disabled]):hover:after {
+    background: var(--dark);
+  }
+}
+
+.tab-active {
+  &:after,
+  &:hover:after {
+    background: var(--blue) !important;
+  }
+}
+
+
+.label {
+  flex: 0 0 150px;
+}
+
+.label-checkbox {
+  flex: 1 0 0;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+
+.button-wrapper {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+.container-toggle + .container {
+  padding: 0 1rem;
+  max-height: 0;
+  transition: all .2s;
+  margin: 0 0 .5rem;
+}
+
+.container {
+  padding: 1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.container-toggle {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 3rem 1rem 1rem;
+  background: rgb(252, 249, 249);
+
+  &:after {
+    content: '▼';
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    margin-top: -10px;
+    transition: transform .2s;
+  }
+
+  &-open + .container {
+    padding: 1rem;
+    max-height: 3000px;
+  }
+
+  &-open:after {
+    transform: rotate(180deg)
+  }
+}
+
+.payment-container {
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: $breakpoint-sm) {
+  .container-toggle + .container {
+    max-height: inherit;
+    padding: .5rem 1rem;
+  }
+
+  .container-toggle {
+    display: none;
+  }
+
+  .container {
+    overflow: auto;
+  }
+}

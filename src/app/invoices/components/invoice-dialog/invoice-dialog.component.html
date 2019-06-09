@@ -1,0 +1,8 @@
+<ng-container *ngIf="isVisible">
+  <div class="dialog">
+    <ng-template [ngTemplateOutlet]="templateRef"></ng-template>
+
+    <span class="close" (click)="handleCloseClick()"></span>
+  </div>
+  <div class="dialog-blur" (click)="handleCloseClick()"></div>
+</ng-container>

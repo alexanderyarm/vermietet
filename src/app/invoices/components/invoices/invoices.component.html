@@ -1,0 +1,24 @@
+<div class="invoices" *ngIf="invoiceList.length">
+  <app-invoices-list
+    [invoiceList]="invoiceList"
+    (onEdit)="onEditInvoice($event)"
+    (onDelete)="onDeleteInvoice($event)"
+  ></app-invoices-list>
+</div>
+
+<div class="button-wrapper">
+  <button class="submit" (click)="addNewInvoice()">Add new invoice</button>
+</div>
+
+<app-invoice-dialog
+  (onClose)="onDialogClose($event)"
+  [templateRef]="dialogContentRef"
+>
+</app-invoice-dialog>
+
+<ng-template #dialogContentRef>
+  <app-invoice-form
+    [invoice]="editInvoiceEntry"
+    (onInvoiceSubmit)="onInvoiceSubmit($event)"
+  ></app-invoice-form>
+</ng-template>

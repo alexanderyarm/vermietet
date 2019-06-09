@@ -1,0 +1,66 @@
+@import '../../../../assets/css/vars.scss';
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;  
+}
+
+.controls {
+  flex: 0 0 85px;
+}
+
+.control {
+  cursor: pointer;
+
+  &:hover {
+    color: var(--blue);
+  }
+}
+
+.info-col {
+  flex: 1 0 0;
+  margin-bottom: .5rem;
+}
+
+.amount {
+  text-align: left;
+  color: var(--green)
+}
+
+.date {
+  font-size: .8rem;
+  color: var(--gray-dark);
+}
+
+@media screen and (min-width: $breakpoint-md) {
+  .info {
+    white-space: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .info-col {
+    margin-right: 1rem;
+  }
+
+  .controls {
+    flex: 0 0 85px;
+  }
+
+  .date {
+    flex: 0 0 70px;
+  }
+
+  .amount {
+    flex: 0 1 70px;
+    text-align: center;
+  }
+}
